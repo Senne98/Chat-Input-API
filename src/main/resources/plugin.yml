@@ -1,4 +1,4 @@
 name: Chat-Input-API
-version: '0.0.1-ALPHA'
+version: '0.0.2-ALPHA'
 main: com.senne.chatInputAPI.ChatInputAPIMain
 api-version: '1.21'
