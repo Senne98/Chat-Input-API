@@ -11,9 +11,27 @@ A plugin for getting text input from chat.
 > [!IMPORTANT]
 > This project is still in early alpha and might not function as expected, but it's a small plugin and will likely just work.
 
+### Java dependency
+#### Gradle
+
+```gradle
+repositories {
+    mavenCentral()
+    maven {
+        name = 'jitpack'
+        url = 'https://jitpack.io'
+    }
+}
+
+dependencies {
+    implementation 'com.github.Senne98:Chat-input-API:v0.0.1-ALPHA'
+}
+```
+
 ### How to use
 
-COMMING SOON
+All methods required to interact with the plugin are in `ChatInputAPI`.
+
 
 ### Partner
 
