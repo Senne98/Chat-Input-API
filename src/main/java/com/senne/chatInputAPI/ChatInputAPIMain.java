@@ -13,13 +13,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.UUID;
-
 public final class ChatInputAPIMain extends JavaPlugin {
 
     @Override
     public void onEnable() {
         // Plugin startup logic
+
+        //bStats
+        // You can find the plugin ids of your plugins on the page https://bstats.org/what-is-my-plugin-id
+        int pluginId = 25493; // <-- Replace with the id of your plugin!
+        Metrics metrics = new Metrics(this, pluginId);
 
         // Register events
         getServer().getPluginManager().registerEvents(new AsyncChatListener(), this);

@@ -33,8 +33,17 @@ public class ChatInputAPI {
     }
 
     /**
+     * Checks if the player has an active input.
+     * @param player The player to check.
+     * @return True if the player has an active input, false otherwise.
+     */
+    public static boolean hasActiveInput(@NotNull Player player) {
+        return ChatHandler.hasActiveChat(player);
+    }
+
+    /**
      * Creates a new input for the player.
-     * @param p The player to create the input for.
+     * @param player The player to create the input for.
      * @param data The data to pass to the onSend method.
      * @param onCancel The method to call when the input is cancelled.
      * @param onSend The method to call when the input is sent.
