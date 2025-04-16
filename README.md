@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.Senne98:Chat-input-API:v0.0.1-ALPHA'
+    implementation 'com.github.Senne98:Chat-input-API:v0.0.3-ALPHA'
 }
 ```
 
