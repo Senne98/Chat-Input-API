@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'com.senne'
-version = '0.0.3-ALPHA'
+version = '0.0.4-BETA'
 
 repositories {
     mavenCentral()

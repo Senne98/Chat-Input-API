@@ -15,6 +15,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ChatInputAPIMain extends JavaPlugin {
 
+    private static JavaPlugin plugin;
+
+    public static JavaPlugin getPlugin() {
+        return plugin;
+    }
+
+    private static void setPlugin(JavaPlugin plugin) {
+        ChatInputAPIMain.plugin = plugin;
+    }
+
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -24,12 +34,37 @@ public final class ChatInputAPIMain extends JavaPlugin {
         int pluginId = 25493; // <-- Replace with the id of your plugin!
         Metrics metrics = new Metrics(this, pluginId);
 
+        init(this);
+
+    }
+
+    @Override
+    public void onDisable() {
+        // Plugin shutdown logic
+    }
+
+    /**
+     * Initializes the ChatInputAPI.
+     * <p>
+     * This method should be called in the onEnable() method of your plugin.
+     *
+     * @param plugin The instance of your plugin.
+     * @return True if the initialization was successful, false if ChatInputAPI was already initialized.
+     */
+    public static boolean init(JavaPlugin plugin) {
+
+        if (getPlugin() != null) {
+            return false; // ChatInputAPI is already initialized
+        }
+
+        setPlugin(plugin);
+
         // Register events
-        getServer().getPluginManager().registerEvents(new AsyncChatListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerLeaveListener(), this);
+        plugin.getServer().getPluginManager().registerEvents(new AsyncChatListener(), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new PlayerLeaveListener(), plugin);
 
         // Register commands
-        LifecycleEventManager<Plugin> manager = this.getLifecycleManager();
+        LifecycleEventManager<Plugin> manager = plugin.getLifecycleManager();
         manager.registerEventHandler(LifecycleEvents.COMMANDS, event -> {
             final Commands commands = event.registrar();
 
@@ -48,10 +83,6 @@ public final class ChatInputAPIMain extends JavaPlugin {
             commands.getDispatcher().register(cancel);
         });
 
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+        return true;
     }
 }

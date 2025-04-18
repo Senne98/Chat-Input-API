@@ -10,6 +10,8 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import static com.senne.chatInputAPI.ChatInputAPIMain.getPlugin;
+
 /**
  * This class contains methods to interact with the ChatInputAPI
  */
@@ -68,7 +70,7 @@ public class ChatInputAPI {
                 .hoverEvent(HoverEvent.showText(Component.text().color(NamedTextColor.RED).append(cancelMessage)))
                 .decoration(TextDecoration.ITALIC, false)
                 .color(NamedTextColor.RED)
-                .clickEvent(ClickEvent.runCommand("/chatTextAPI:chatinputcancel")));
+                .clickEvent(ClickEvent.runCommand("/" + getPlugin().getName() + ":chatinputcancel")));
     }
 
     /**
